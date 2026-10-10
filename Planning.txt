@@ -5,3 +5,4 @@ backend java to support creating a new objecty on click
 backend to support distnace based on pixel for arrows
 backend to support pulling gemini repsonse from gemini
 
+pause + play button, reset button, Drag and drop moon.

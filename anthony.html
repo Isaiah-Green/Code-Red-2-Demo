@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeRED</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="my-box">Solar System Sandbox</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+      const scene = new THREE.Scene();
+
+      // ---------- Orthographic camera ----------
+      // viewSize = how many world units tall the screen shows. Raise it to zoom out.
+      const viewSize = 120;
+      function frustum() {
+        const aspect = window.innerWidth / window.innerHeight;
+        return {
+          left: (-viewSize * aspect) / 2,
+          right: (viewSize * aspect) / 2,
+          top: viewSize / 2,
+          bottom: -viewSize / 2,
+        };
+      }
+      const f = frustum();
+      const camera = new THREE.OrthographicCamera(
+        f.left,
+        f.right,
+        f.top,
+        f.bottom,
+        0.1,
+        1000,
+      );
+      // Tilted top-down angle so orbits read clearly. For a pure top-down view use (0, 100, 0.01).
+      camera.position.set(0, 70, 60);
+      camera.lookAt(0, 0, 0);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // ---------- Starfield background ----------
+      // The stars are children of the camera, so they stay fixed on screen like a
+      // distant backdrop while the planets move in front of them.
+      const starCount = 1500;
+      const starPositions = new Float32Array(starCount * 3);
+      const starColors = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount; i++) {
+        starPositions[i * 3] = (Math.random() - 0.5) * viewSize * 3.4; // x
+        starPositions[i * 3 + 1] = (Math.random() - 0.5) * viewSize * 2; // y
+        starPositions[i * 3 + 2] = -(150 + Math.random() * 300); // z (in front of camera, behind planets)
+        const b = 0.35 + Math.random() * 0.65; // random brightness per star
+        starColors[i * 3] = starColors[i * 3 + 1] = starColors[i * 3 + 2] = b;
+      }
+      const starGeometry = new THREE.BufferGeometry();
+      starGeometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(starPositions, 3),
+      );
+      starGeometry.setAttribute(
+        "color",
+        new THREE.BufferAttribute(starColors, 3),
+      );
+      const starMaterial = new THREE.PointsMaterial({
+        size: 1.6,
+        sizeAttenuation: false, // keep every star a crisp few-pixel dot
+        vertexColors: true,
+      });
+      const stars = new THREE.Points(starGeometry, starMaterial);
+      camera.add(stars);
+      scene.add(camera); // the camera must be in the scene for its children to render
+
+      // ---------- Helper to build a wireframe sphere ----------
+      function makeBody(radius, segments, color) {
+        const geometry = new THREE.SphereGeometry(radius, segments, segments);
+        const material = new THREE.MeshBasicMaterial({
+          color: color,
+          wireframe: true,
+        });
+        return new THREE.Mesh(geometry, material);
+      }
+
+      // ---------- Sun (center of the system) ----------
+      const sun = makeBody(5, 12, 0xffcc00);
+      scene.add(sun);
+
+      // ---------- Planets ----------
+      // distance = orbit radius from the sun, orbitSpeed = radians/sec around the sun,
+      // spinSpeed = radians/sec around its own axis
+      const planets = [
+        {
+          name: "Mercury",
+          mesh: makeBody(1, 8, 0xaaaaaa),
+          distance: 12,
+          orbitSpeed: 1.6,
+          spinSpeed: 1.0,
+        },
+        {
+          name: "Venus",
+          mesh: makeBody(2, 10, 0xe3bb76),
+          distance: 19,
+          orbitSpeed: 1.1,
+          spinSpeed: -0.4,
+        },
+        {
+          name: "Earth",
+          mesh: makeBody(3, 12, 0x2233ff),
+          distance: 28,
+          orbitSpeed: 0.7,
+          spinSpeed: 2.0,
+        },
+        {
+          name: "Mars",
+          mesh: makeBody(1.2, 8, 0xf4e2bb),
+          distance: 36,
+          orbitSpeed: 0.45,
+          spinSpeed: 1.9,
+        },
+      ];
+
+      planets.forEach((p) => {
+        p.angle = Math.random() * Math.PI * 2; // random starting position on the orbit
+        scene.add(p.mesh);
+
+        // Orbit ring so the paths are visible
+        const ringGeometry = new THREE.RingGeometry(
+          p.distance - 0.08,
+          p.distance + 0.08,
+          128,
+        );
+        const ringMaterial = new THREE.MeshBasicMaterial({
+          color: 0x444444,
+          side: THREE.DoubleSide,
+        });
+        const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+        ring.rotation.x = -Math.PI / 2; // lay flat on the x/z plane
+        scene.add(ring);
+      });
+
+      // ---------- Animation loop ----------
+      const clock = new THREE.Clock();
+      function animate() {
+        requestAnimationFrame(animate);
+        const dt = clock.getDelta();
+
+        sun.rotation.y += 0.3 * dt;
+
+        planets.forEach((p) => {
+          p.angle += p.orbitSpeed * dt;
+          p.mesh.position.x = Math.cos(p.angle) * p.distance;
+          p.mesh.position.z = Math.sin(p.angle) * p.distance;
+          p.mesh.rotation.y += p.spinSpeed * dt;
+        });
+
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // ---------- Resize handling ----------
+      window.addEventListener("resize", () => {
+        const f = frustum();
+        camera.left = f.left;
+        camera.right = f.right;
+        camera.top = f.top;
+        camera.bottom = f.bottom;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+    </script>
+  </body>
+</html>

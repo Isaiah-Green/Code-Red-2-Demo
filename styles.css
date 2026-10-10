@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+}
+.my-box {
+  position: absolute;
+  top: 650px;
+  left: 30px;
+  width: 360px;
+  height: 100px;
+  background-color: rgba(153, 147, 146, 0.8);
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 15px;
+  font-family: Arial, sans-serif;
+  z-index: 10; /* sits on top of the 3D canvas */
+  pointer-events: auto;
+}
