@@ -142,7 +142,7 @@
 
       // ---------- Physics & Bodies Setup ----------
       const G = 1.0;
-      const SOFTENING = 0.5;
+      const SOFTENING = 0.01;
       let bodies = [];
       let userSpawnedMeshes = []; 
       let userSpawnedRings = [];  
@@ -363,9 +363,11 @@
         // Update UI info box if a planet is selected
         if (selectedBody) {
           const speed = selectedBody.velocity.length().toFixed(2);
+          const distance = new THREE.Vector3().subVectors(bodies[0].position,selectedBody.position).length().toFixed(2)
           document.getElementById('selected-info').innerHTML = `
             <strong>${selectedBody.name}</strong><br>
             Velocity: ${speed} units/s
+            Current Distance From Sun: ${distance * 5342781} Km<br>
           `;
         }
 
@@ -386,6 +388,7 @@
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
       });
+    
     </script>
   </body>
 </html>
