@@ -1,1 +1,7 @@
-Planning File
+Planning File:
+opengl - draw and run animation/rotation
+way to get the opengl to run on the website
+backend java to support creating a new objecty on click
+backend to support distnace based on pixel for arrows
+backend to support pulling gemini repsonse from gemini
+
