@@ -1,0 +1,33 @@
+
+Surface Gravity of Each Planet (in m/s^2) and relative to earth's 1g
+
+Mercury: 3.70 m/s^2
+Venus: 8.87 m/s^2
+Earth: 9.81 m/s^2
+Mars: 3.71 m/s^2
+Jupiter: 24.79 m/s^2
+Saturn: 10.44 m/s^2
+Uranus: 8.69 m/s^2
+Neptune: 11.15 m/s^2
+
+Calculating Weight on Another Planet
+
+W = m X g
+ex: 70 kg (Earth: roughly 154 lbs or 687 N)
+
+On Mars: (3.71 m/s^2) 70 * 3.71 = 259.7 N (58.6 lbs)
+
+Kepler's Third Law of Planetary Motion and the Vis-Visa equation.
+
+Orbital Period Formula - Newton's modification of Kepler's Third Law of Planetary motion - 
+
+The Effect: Adding mass increases the total mass. 
+Because this term is in the denominator, adding mass decreases the orbital period (\(T\)), 
+meaning the planet will orbit slightly faster.
+
+To find out how the planet's instantaneous speed changes at any given point in 
+its orbit after the mass is added, 
+you use the Vis-Viva equation:
+
+The Effect: Adding mass increases the total gravitational pull of the system, 
+requiring a higher orbital velocity to maintain a stable, circular distance
