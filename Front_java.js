@@ -480,9 +480,11 @@ function animate(currentTime) {
   // Update UI info box if a planet is selected
   if (selectedBody) {
     const speed = selectedBody.velocity.length().toFixed(2);
+    const distance = new THREE.Vector3().subVectors(bodies[0].position, selectedBody.position).length().toFixed(2)
     document.getElementById("selected-info").innerHTML = `
             <strong>${selectedBody.name}</strong><br>
-            Velocity: ${speed} units/s
+            Velocity: ${speed} units/s <br>
+            Distance from the Sun: ${distance * 5342781} Km <br>
           `;
   }
 
