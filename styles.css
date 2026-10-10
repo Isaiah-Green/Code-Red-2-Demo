@@ -5,16 +5,51 @@ body {
 }
 .my-box {
   position: absolute;
-  top: 650px;
+  top: 30px;
   left: 30px;
-  width: 360px;
-  height: 100px;
-  background-color: rgba(153, 147, 146, 0.8);
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 12px 18px;
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+  z-index: 10;
+  min-width: 180px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.button-container {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.ui-btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
   border: 2px solid #ffffff;
   border-radius: 8px;
-  color: #ffffff;
-  padding: 15px;
   font-family: Arial, sans-serif;
-  z-index: 10; /* sits on top of the 3D canvas */
-  pointer-events: auto;
+}
+#pause-btn {
+  background-color: #333333;
+}
+#pause-btn:hover {
+  background-color: #555555;
+}
+#reset-btn {
+  background-color: #333333;
+}
+#reset-btn:hover {
+  background-color: #555555;
+}
+#spawn-btn {
+  background-color: #ff3300;
+}
+#spawn-btn:hover {
+  background-color: #ff5522;
 }
