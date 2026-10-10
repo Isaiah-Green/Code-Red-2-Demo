@@ -6,3 +6,59 @@ backend to support distnace based on pixel for arrows
 backend to support pulling gemini repsonse from gemini
 
 pause + play button, reset button, Drag and drop moon.
+
+Per-planet data (easy: store in the planets array and show on click or hover)
+
+Name, type (rocky, gas giant, ice giant, dwarf planet)
+Diameter or radius, and mass
+Surface gravity (e.g., Earth 9.8 m/s², Mars 3.7 m/s²)
+Average surface temperature
+Number of moons
+Atmosphere composition
+Fun facts
+
+Orbital data (easy to moderate, since your orbit variables already exist)
+
+Distance from the sun (in AU or km)
+Orbital period (length of a year)
+Rotation period (length of a day)
+Orbital speed
+Axial tilt
+Orbital eccentricity (circular vs. elliptical paths)
+
+Live readouts (moderate: computed each frame from your simulation state)
+
+Current distance from the sun
+Current orbital speed
+Current angle or position along the orbit
+Elapsed simulation time, shown as days or years
+Time scale (e.g., “1 second = 10 days”)
+Frame rate (FPS)
+
+Interface elements (moderate)
+
+Labels floating next to each planet
+An info panel for the selected planet (your red CodeRED box could become this)
+Toggles for orbit lines, labels, and stars
+Pause, play, and speed controls
+Zoom controls (change viewSize)
+A list or menu to jump to or follow a planet
+
+Sandbox features (harder, but good for your concept)
+
+Sliders to change a planet’s mass, size, distance, or orbit speed
+Add or remove planets and moons
+Adjust the sun’s size or mass
+Gravity-based orbits, where planets pull on each other using Newton’s law instead of fixed circles
+Collision or ejection when an orbit becomes unstable
+A “habitable zone” ring showing where liquid water could exist
+Distance comparison between two selected bodies
+Trails that fade behind each planet
+
+Extras
+
+Moons orbiting planets (Earth’s Moon, Mars’s Phobos and Deimos)
+An asteroid belt between Mars and Jupiter
+Saturn’s rings
+Comets with elliptical orbits
+Scale toggles between realistic and compressed distances
