@@ -62,3 +62,14 @@ An asteroid belt between Mars and Jupiter
 Saturn’s rings
 Comets with elliptical orbits
 Scale toggles between realistic and compressed distances
+
+Powerpoint:
+
+Introduction -
+Tech -
+Features -
+Demo -
+Scalability -
+
+Purpose - Helps simulate and visualize how the planet's orbits and velocity can be influenced by 
+added mass.
