@@ -227,6 +227,7 @@ const SPAWN_MIN_MASS = 1; // heavy enough to noticeably tug on the inner planets
 const SPAWN_MAX_MASS = 5;
 const SPAWN_MAX_TRIES = 100;
 
+
 // Distance of Mars's orbit from the sun at a given angle (angle 0 = +x axis)
 function marsOrbitRadius(angle) {
   return (
@@ -335,6 +336,7 @@ window.addEventListener("click", (event) => {
 
 // ---------- Reset Function ----------
 function resetSimulation() {
+  total_days = 0.0;
   userSpawnedMeshes.forEach((mesh) => {
     scene.remove(mesh);
     mesh.geometry.dispose();
@@ -449,17 +451,13 @@ function stepPhysics(dt) {
     body.velocity.addScaledVector(body.acceleration, dt / 2);
   });
 }
-
 // Initial accelerations so the first half-kick is correct
 computeAccelerations();
-
 // ---------- Main Animation Loop ----------
 let lastTime = performance.now();
 let accumulator = 0;
-
 function animate(currentTime) {
   requestAnimationFrame(animate);
-
   const deltaTime = Math.min((currentTime - lastTime) / 1000, 0.1);
   lastTime = currentTime;
 
@@ -491,7 +489,7 @@ function animate(currentTime) {
             <strong>${selectedBody.name}</strong><br>
             Velocity: ${speed} units/s <br>
             Distance from the Sun: ${distance * 5342781} Km <br>
-            Every 1 Second is 12.6 Earth Days!<br>
+            Every 1 Second is 12.6 Earth Days<br>
           `;
   }
 
