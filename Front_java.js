@@ -387,7 +387,11 @@ document.getElementById("reset-btn").addEventListener("click", () => {
 const pauseBtn = document.getElementById("pause-btn");
 pauseBtn.addEventListener("click", () => {
   isPaused = !isPaused;
-  pauseBtn.textContent = isPaused ? "Play" : "Pause";
+  document.getElementById("pause-text").textContent = isPaused ? "Play" : "Pause";
+  const img = document.getElementById("pause_play_btn");
+  if (img) {
+    img.src = isPaused ? "image2.jpg" : "image0.jpg";
+  }
 });
 
 // ---------- Gravity Calculation ----------
