@@ -7,6 +7,9 @@ body {
   position: absolute;
   top: 30px;
   left: 30px;
+  padding: 12px;
+  font-family: Arial, sans-serif;
+  border-radius: 8px;
   background: rgba(0, 0, 0, 0.85);
   color: white;
   border: 2px solid #ffffff;
@@ -35,27 +38,21 @@ body {
   border-radius: 50%;
 }
 #pause-btn {
-  background-color: #333333;
   background: none;
 }
 #pause-btn:hover {
-  background-color: #555555;
   background: none;
 }
 #reset-btn {
-  background-color: #333333;
   background: none;
 }
 #reset-btn:hover {
-  background-color: #555555;
   background: none;
 }
 #spawn-btn {
-  background-color: #ff3300;
   background: none;
 }
 #spawn-btn:hover {
-  background-color: #ff5522;
   background: none;
 }
 #pause_play_btn {
