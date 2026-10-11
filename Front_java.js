@@ -223,8 +223,8 @@ let spawnCounter = 1;
 const SPAWN_MIN_GAP = 3; // minimum distance kept outside Mars's orbit (units)
 const SPAWN_MAX_GAP = 12; // how far beyond Mars's orbit it can spawn at that angle
 const SPAWN_MAX_ECCENTRICITY = 0.3;
-const SPAWN_MIN_MASS = 0.5; // heavy enough to noticeably tug on the inner planets
-const SPAWN_MAX_MASS = 3;
+const SPAWN_MIN_MASS = 1; // heavy enough to noticeably tug on the inner planets
+const SPAWN_MAX_MASS = 5;
 const SPAWN_MAX_TRIES = 100;
 
 // Distance of Mars's orbit from the sun at a given angle (angle 0 = +x axis)
