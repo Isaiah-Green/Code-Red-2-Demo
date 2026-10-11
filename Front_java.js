@@ -491,6 +491,7 @@ function animate(currentTime) {
             <strong>${selectedBody.name}</strong><br>
             Velocity: ${speed} units/s <br>
             Distance from the Sun: ${distance * 5342781} Km <br>
+            Every 1 Second is 12.6 Earth Days!<br>
           `;
   }
 
