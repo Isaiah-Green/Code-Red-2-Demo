@@ -227,7 +227,6 @@ const SPAWN_MIN_MASS = 1; // heavy enough to noticeably tug on the inner planets
 const SPAWN_MAX_MASS = 5;
 const SPAWN_MAX_TRIES = 100;
 
-
 // Distance of Mars's orbit from the sun at a given angle (angle 0 = +x axis)
 function marsOrbitRadius(angle) {
   return (
@@ -391,7 +390,7 @@ pauseBtn.addEventListener("click", () => {
   isPaused = !isPaused;
   const img = document.getElementById("pause_play_btn");
   if (img) {
-    img.src = isPaused ? "Play Button.png" : "Pause Button.png";
+    img.src = isPaused ? "Play Button.png" : "Pause button.png";
   }
 });
 
