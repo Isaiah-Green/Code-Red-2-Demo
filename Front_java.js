@@ -387,10 +387,9 @@ document.getElementById("reset-btn").addEventListener("click", () => {
 const pauseBtn = document.getElementById("pause-btn");
 pauseBtn.addEventListener("click", () => {
   isPaused = !isPaused;
-  document.getElementById("pause-text").textContent = isPaused ? "Play" : "Pause";
   const img = document.getElementById("pause_play_btn");
   if (img) {
-    img.src = isPaused ? "image2.jpg" : "image0.jpg";
+    img.src = isPaused ? "Play Button.png" : "Pause Button.png";
   }
 });
 
@@ -484,7 +483,10 @@ function animate(currentTime) {
   // Update UI info box if a planet is selected
   if (selectedBody) {
     const speed = selectedBody.velocity.length().toFixed(2);
-    const distance = new THREE.Vector3().subVectors(bodies[0].position, selectedBody.position).length().toFixed(2)
+    const distance = new THREE.Vector3()
+      .subVectors(bodies[0].position, selectedBody.position)
+      .length()
+      .toFixed(2);
     document.getElementById("selected-info").innerHTML = `
             <strong>${selectedBody.name}</strong><br>
             Velocity: ${speed} units/s <br>
